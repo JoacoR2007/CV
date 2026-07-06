@@ -7,6 +7,29 @@
     --texto-principal: #f8fafc;
     --texto-secundario: #94a3b8;
     --borde: rgba(255, 255, 255, 0.05);
+    --footer-bg: #060911;
+}
+
+/* Tema Claro */
+[data-theme="light"] {
+    --bg-principal: #f4f6fb;
+    --bg-tarjeta: #ffffff;
+    --bg-nav: rgba(244, 246, 251, 0.8);
+    --acento: #2563eb;
+    --acento-glow: rgba(37, 99, 235, 0.08);
+    --texto-principal: #0f172a;
+    --texto-secundario: #52606d;
+    --borde: rgba(15, 23, 42, 0.08);
+    --footer-bg: #e9edf5;
+}
+
+[data-theme="light"] .hero-info .tag {
+    background-color: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+[data-theme="light"] .hero-img-container::before {
+    opacity: 0.12;
 }
 
 * {
@@ -22,6 +45,7 @@ body {
     color: var(--texto-principal);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Barra de Navegación */
@@ -35,6 +59,7 @@ header {
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--borde);
     z-index: 1000;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .nav-container {
@@ -44,6 +69,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .logo {
@@ -76,6 +102,58 @@ nav a:hover {
     color: var(--texto-principal);
 }
 
+/* Botones de Tema e Idioma */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-tarjeta);
+    border: 1px solid var(--borde);
+    color: var(--texto-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-btn:hover {
+    border-color: var(--acento);
+    color: var(--acento);
+    transform: translateY(-2px);
+}
+
+#lang-toggle {
+    width: auto;
+    padding: 0 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+#theme-icon {
+    display: inline-block;
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg) scale(0.4); opacity: 0; }
+    60% { transform: rotate(300deg) scale(1.15); opacity: 1; }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+.icon-spin {
+    animation: iconSpin 0.5s ease;
+}
+
 /* Sección Hero / Inicio */
 .hero {
     min-height: 100vh;
@@ -101,6 +179,7 @@ nav a:hover {
     display: inline-block;
     margin-bottom: 1.5rem;
     border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
 .hero-info h1 {
@@ -136,6 +215,7 @@ nav a:hover {
     opacity: 0.2;
     border-radius: 50%;
     z-index: -1;
+    transition: background-color 0.4s ease, opacity 0.4s ease;
 }
 
 .profile-img {
@@ -145,6 +225,7 @@ nav a:hover {
     object-fit: cover;
     border: 4px solid var(--bg-tarjeta);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: border-color 0.4s ease;
 }
 
 .btn-container {
@@ -244,6 +325,7 @@ section {
     border-radius: 6px;
     font-size: 0.9rem;
     color: var(--texto-principal);
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
 /* Tarjetas de Educación y Logros */
@@ -259,7 +341,7 @@ section {
     border-radius: 12px;
     padding: 2.5rem;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .card:hover {
@@ -285,6 +367,7 @@ section {
     color: var(--acento);
     font-weight: 500;
     font-size: 1rem;
+    transition: color 0.4s ease;
 }
 
 .card-date {
@@ -294,6 +377,11 @@ section {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--texto-secundario);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+[data-theme="light"] .card-date {
+    background-color: rgba(15, 23, 42, 0.05);
 }
 
 .card-body p {
@@ -316,6 +404,11 @@ section {
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
     border: 1px solid var(--borde);
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+[data-theme="light"] .card-tag {
+    background-color: rgba(15, 23, 42, 0.02);
 }
 
 /* Conocimientos Técnicos Grid */
@@ -331,7 +424,7 @@ section {
     border-radius: 10px;
     padding: 1.5rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .tech-card:hover {
@@ -363,6 +456,7 @@ section {
     border: 1px solid var(--borde);
     border-radius: 12px;
     padding: 2rem;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .extra-item {
@@ -386,10 +480,11 @@ section {
 
 /* Footer / Contacto */
 footer {
-    background-color: #060911;
+    background-color: var(--footer-bg);
     border-top: 1px solid var(--borde);
     padding: 4rem 2rem;
     text-align: center;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .footer-container {
@@ -425,7 +520,7 @@ footer {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
     font-size: 1.1rem;
 }
 
